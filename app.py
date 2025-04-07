@@ -2,10 +2,17 @@ import streamlit as st
 import pickle
 import joblib
 import numpy as np
+import os
+import gdown
 
 # -------------------------------
 # Load model, features, and scaler
 # -------------------------------
+
+if not os.path.exists("best_model_rf_top10.pkl"):
+    url = "https://drive.google.com/file/d/1EMgZ8L7ZBqWX2rSMAZUxDUT8wz4kWDRY/view?usp=drive_link"
+    gdown.download(url, "best_model_rf_top10.pkl", quiet=False)
+
 with open("best_model_rf_top10.pkl", "rb") as f:
     model = pickle.load(f)
 
